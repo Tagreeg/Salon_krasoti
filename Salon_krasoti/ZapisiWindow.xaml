@@ -1,0 +1,40 @@
+﻿<Window x:Class="Salon_krasoti.ZapisiWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Salon_krasoti"
+        mc:Ignorable="d"
+        Title="ZapisiWindow" Height="450" Width="800">
+    <Grid Background="#ffe4ff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="#FF4A6D"/>
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Height="60" Background="White" Width="60" HorizontalAlignment="Left" Margin="20,0,0,0" CornerRadius="15"/>
+        <Image Grid.Row="0" Grid.ColumnSpan="2" Source="Img/Logo/beauty_logo.ico" Height="50" HorizontalAlignment="Left" Margin="25,0,0,0"/>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Список записей" FontSize="25" VerticalAlignment="Center" Foreground="White" Margin="90,0,0,0"/>
+
+        <DataGrid Grid.Row="1" x:Name="ZapisiTablVivoda" AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="#ffe4ff">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название процедуры" Binding="{Binding Service.Title}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Начало процедуры" Binding="{Binding StartTime}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Client.LastName}" Width="150"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="BtnEdit" Click="BtnEdit_Click">Изменить</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Назад" Name="Back" Click="Back_Click"  Grid.Row="2" Width="150" Height="30" HorizontalAlignment="Left" Foreground="White" Background="#FF4A6D"/>
+        <Button Content="Добавить" Name="BtnAdd" Click="BtnAdd_Click" Margin="-320,0,0,0" Grid.Row="2" Width="150" Height="30" Foreground="White" Background="#FF4A6D"/>
+        <Button Content="Удалить" Name="BtnDelete" Click="BtnDelete_Click" Grid.Row="2" Width="150" Height="30" HorizontalAlignment="Right" Foreground="White" Background="#FF4A6D"/>
+    </Grid>
+</Window>
